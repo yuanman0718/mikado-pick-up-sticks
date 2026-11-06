@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fbfbf8">
+  <title>MIKADO — Pick-Up Sticks</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="scene" id="scene" data-mode="closed">
+    <canvas id="sceneCanvas" aria-label="Mikado pick-up sticks game"></canvas>
+
+    <header class="topbar">
+      <div class="brand" aria-label="Mikado">
+        <span class="brand__line"></span>
+        <span>MIKADO</span>
+        <small>PICK-UP STICKS</small>
+      </div>
+
+      <div class="game-metrics" id="gameMetrics" aria-live="polite">
+        <div class="metric metric--score">
+          <span>SCORE</span>
+          <strong id="scoreValue">0</strong>
+        </div>
+        <div class="metric metric--time">
+          <span>TIME</span>
+          <strong><b id="timeValue">75</b><small>s</small></strong>
+        </div>
+        <div class="metric metric--lives">
+          <span>LIVES</span>
+          <div class="lives" aria-label="Three lives">
+            <i data-life="1"></i><i data-life="2"></i><i data-life="3"></i>
+          </div>
+        </div>
+      </div>
+
+      <button class="sound-button" id="soundButton" type="button" aria-label="Mute sound" aria-pressed="true">
+        <span class="sound-button__bar"></span>
+        <span class="sound-button__bar"></span>
+        <span class="sound-button__bar"></span>
+      </button>
+    </header>
+
+    <section class="guide" id="guide" aria-live="polite">
+      <h1 id="guideTitle">SLIDE TO OPEN</h1>
+      <p id="guideText">PRESS THE LID AND PULL DOWN</p>
+    </section>
+
+    <div class="drag-hint" id="dragHint" aria-hidden="true">
+      <span></span>
+    </div>
+
+    <div class="play-hint" id="playHint">
+      <span>DRAG SPACE TO LOOK</span>
+      <i></i>
+      <span>DRAG STICK TO PULL</span>
+      <i></i>
+      <span class="zoom-hint zoom-hint--mouse">SCROLL TO ZOOM</span>
+      <span class="zoom-hint zoom-hint--touch">PINCH TO ZOOM</span>
+    </div>
+
+    <div class="hover-tag" id="hoverTag" aria-hidden="true"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="time-rule" id="timeRule" aria-hidden="true"><i id="timeRuleFill"></i></div>
+
+    <section class="tutorial" id="tutorialOverlay" aria-modal="true" role="dialog" aria-labelledby="tutorialTitle">
+      <div class="tutorial__panel">
+        <p class="tutorial__eyebrow">BEFORE YOU START</p>
+        <h2 id="tutorialTitle">HOW TO PLAY</h2>
+        <div class="demo-list">
+          <div class="demo-row">
+            <span class="demo-icon demo-icon--rotate" aria-hidden="true">
+              <i class="demo-finger"></i>
+              <i class="demo-track"></i>
+            </span>
+            <span class="demo-copy">
+              <b>01 / LOOK AROUND</b>
+              <small>DRAG EMPTY SPACE WITH ONE FINGER</small>
+            </span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-icon demo-icon--pinch" aria-hidden="true">
+              <i class="pinch-finger pinch-finger--left"></i>
+              <i class="pinch-line"></i>
+              <i class="pinch-finger pinch-finger--right"></i>
+            </span>
+            <span class="demo-copy">
+              <b>02 / MOVE CLOSER</b>
+              <small>PINCH WITH TWO FINGERS TO ZOOM</small>
+            </span>
+          </div>
+          <div class="demo-row">
+            <span class="demo-icon demo-icon--pull" aria-hidden="true">
+              <i class="demo-stick"></i>
+              <i class="pull-pointer"></i>
+            </span>
+            <span class="demo-copy">
+              <b>03 / PICK A STICK</b>
+              <small>DRAG A STICK ALONG ITS LENGTH</small>
+            </span>
+          </div>
+        </div>
+        <button class="begin-button" id="beginButton" type="button">START PLAYING</button>
+      </div>
+    </section>
+
+    <section class="result" id="result" aria-modal="true" role="dialog" aria-labelledby="resultTitle">
+      <p class="result__eyebrow" id="resultReason">TIME'S UP</p>
+      <h2 id="resultTitle">YOU SCORED</h2>
+      <strong class="result__score" id="resultScore">0</strong>
+      <p class="result__meta" id="resultMeta">0 STICKS · BEST STREAK 0 · 0 MISSES</p>
+      <p class="result__best" id="resultBest">PERSONAL BEST · 0</p>
+      <button class="restart-button" id="restartButton" type="button">PLAY AGAIN</button>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
